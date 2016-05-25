@@ -5,9 +5,6 @@ import android.support.v4.widget.SlidingPaneLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.example.administrator.kaolafm50.others.utils.EventUtil;
-import com.example.administrator.kaolafm50.others.utils.LogUtil;
-
 /**
  * Created by Administrator on 16-5-25.
  */
@@ -30,13 +27,13 @@ public class KaoLaSlidePanelLayout extends SlidingPaneLayout{
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        LogUtil.w("KaoLaSlidePanelLayout+dispatchTouchEvent="+ EventUtil.parseEvent(ev));
+//        LogUtil.w("KaoLaSlidePanelLayout+dispatchTouchEvent="+ EventUtil.parseEvent(ev));
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        LogUtil.w("KaoLaSlidePanelLayout+onTouchEvent="+ EventUtil.parseEvent(ev));
+//        LogUtil.w("KaoLaSlidePanelLayout+onTouchEvent="+ EventUtil.parseEvent(ev));
         return super.onTouchEvent(ev);
     }
     //拦截事件的方法
@@ -45,7 +42,7 @@ public class KaoLaSlidePanelLayout extends SlidingPaneLayout{
         if (listener!=null) {
             childPagerIndex=listener.getIndex();
         }
-        LogUtil.w("KaoLaSlidePanelLayout+onInterceptTouchEvent="+ EventUtil.parseEvent(ev));
+//        LogUtil.w("KaoLaSlidePanelLayout+onInterceptTouchEvent="+ EventUtil.parseEvent(ev));
         if (childPagerIndex!=0) {
             return false;
         }

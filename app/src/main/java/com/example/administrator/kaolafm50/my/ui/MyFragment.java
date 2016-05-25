@@ -1,13 +1,17 @@
 package com.example.administrator.kaolafm50.my.ui;
 
+import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.kaolafm50.R;
 import com.example.administrator.kaolafm50.my.adapter.MyViewPagerAdapter;
+import com.example.administrator.kaolafm50.my.widget.KaoLaScrollView;
 import com.example.administrator.kaolafm50.others.ui.BaseFragment;
+import com.example.administrator.kaolafm50.others.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +19,12 @@ import java.util.List;
 public class MyFragment extends BaseFragment {
 
 
-private RelativeLayout my_rl_upper;
+    private RelativeLayout my_rl_upper;
     private TabLayout my_tl;
     private ViewPager my_vp;
     private List<Fragment> fragments=new ArrayList<>();
     private List<String> titles=new ArrayList<>();
+    private KaoLaScrollView my_klsv;
 
     @Override
     protected int getLayoutId() {
@@ -31,6 +36,7 @@ private RelativeLayout my_rl_upper;
         my_rl_upper= (RelativeLayout) root.findViewById(R.id.my_rl_upper);
         my_tl = (TabLayout) root.findViewById(R.id.my_tl);
         my_vp = (ViewPager) root.findViewById(R.id.my_vp);
+        my_klsv = (KaoLaScrollView) root.findViewById(R.id.my_klsv);
     }
 
     @Override
@@ -56,5 +62,16 @@ private RelativeLayout my_rl_upper;
         my_vp.setAdapter(myViewPagerAdapter);
         my_vp.setCurrentItem(0);
         my_tl.setupWithViewPager(my_vp);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            my_klsv.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+
+                @Override
+                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                    LogUtil.w("scrollX="+scrollX+" scrollY="+scrollY+" oldScrollX="+oldScrollX+" oldScrollY="+oldScrollY);
+                }
+            });
+        }
+
     }
 }

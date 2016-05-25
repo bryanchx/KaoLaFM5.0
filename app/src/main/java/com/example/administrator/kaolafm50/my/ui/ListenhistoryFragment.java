@@ -2,6 +2,7 @@ package com.example.administrator.kaolafm50.my.ui;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.administrator.kaolafm50.R;
 import com.example.administrator.kaolafm50.my.adapter.HistoryRecycleViewAdapter;
@@ -43,5 +44,16 @@ public class ListenhistoryFragment extends BaseFragment {
             list.add(""+i);
         }
         historyRecycleViewAdapter.notifyDataSetChanged();
+
+        //给RecycleView里面每个item设置监听
+        historyRecycleViewAdapter.setOnMyItemTouchListener(new HistoryRecycleViewAdapter.OnMyItemTouchListener() {
+
+            @Override
+            public void getItemId(int id) {
+                Toast.makeText(getActivity(),"id="+id,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 }

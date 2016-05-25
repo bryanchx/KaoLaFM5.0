@@ -20,6 +20,7 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
 
     private List<String> list;
     private Context context;
+    private OnMyItemTouchListener onMyItemTouchListener;
 
     public HistoryRecycleViewAdapter(List<String> list, Context context) {
         this.list = list;
@@ -54,13 +55,32 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
         private TextView history_tv_listenState;
         private ImageView history_iv_icon;
 
-        public MyRecycleViewAdapter(View itemView) {
+        public MyRecycleViewAdapter(final View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    if (onMyItemTouchListener==null) {
+                        return;
+                    }
+                    onMyItemTouchListener.getItemId(getAdapterPosition());
+
+                }
+            });
             history_iv_icon= (ImageView) itemView.findViewById(R.id.history_iv_icon);
             history_tv_title = (TextView) itemView.findViewById(R.id.history_tv_title);
             history_tv_msg = (TextView) itemView.findViewById(R.id.history_tv_msg);
             history_tv_listenState = (TextView) itemView.findViewById(R.id.history_tv_listenState);
 
         }
+    }
+
+    public interface OnMyItemTouchListener{
+        void getItemId(int id);
+    }
+
+    public void setOnMyItemTouchListener(OnMyItemTouchListener onMyItemTouchListener){
+        this.onMyItemTouchListener=onMyItemTouchListener;
     }
 }

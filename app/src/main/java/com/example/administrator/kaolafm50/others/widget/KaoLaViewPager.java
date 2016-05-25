@@ -5,9 +5,6 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.example.administrator.kaolafm50.others.utils.EventUtil;
-import com.example.administrator.kaolafm50.others.utils.LogUtil;
-
 /**
  * Created by Administrator on 16-5-25.
  */
@@ -23,20 +20,20 @@ public class KaoLaViewPager extends ViewPager{
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        LogUtil.w("KaoLaViewPager+dispatchTouchEvent="+ EventUtil.parseEvent(ev));
+//        LogUtil.w("KaoLaViewPager+dispatchTouchEvent="+ EventUtil.parseEvent(ev));
 
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        LogUtil.w("KaoLaViewPager+onTouchEvent="+ EventUtil.parseEvent(ev));
+//        LogUtil.w("KaoLaViewPager+onTouchEvent="+ EventUtil.parseEvent(ev));
         return super.onTouchEvent(ev);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        LogUtil.w("KaoLaViewPager+onInterceptTouchEvent="+ EventUtil.parseEvent(ev));
+//        LogUtil.w("KaoLaViewPager+onInterceptTouchEvent="+ EventUtil.parseEvent(ev));
 
         return super.onInterceptTouchEvent(ev);
     }

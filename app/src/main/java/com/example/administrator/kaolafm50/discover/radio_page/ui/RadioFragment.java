@@ -145,9 +145,12 @@ public class RadioFragment extends BaseFragment implements View.OnClickListener{
         radioRCAdapter = new RadioRCAdapter(list, getActivity());
         radio_rv.setAdapter(radioRCAdapter);
         list = radio.getDataList().get(1).getDataList();
-        list.add(null);
-        final List<ChannelInRadio> list1 = list.subList(0, 8);
-        final List<ChannelInRadio> list2 = list;
+//        list.add(null);
+        final List<ChannelInRadio> list1 = new ArrayList<>();
+        for (int i=0;i<list.size();i++) {
+            list1.add(list.get(i));
+        }
+//        final List<ChannelInRadio> list2 = list;
         radioRCAdapter.notifyDataSetChanged();
 
         radioRCAdapter.setOnMyRecycleViewClickListener(new RadioRCAdapter.OnMyRecycleViewClickListener() {
@@ -156,19 +159,27 @@ public class RadioFragment extends BaseFragment implements View.OnClickListener{
             public void onItemClick(View v, int position) {
                 int id = v.getId();
                 Toast.makeText(getActivity(),"position="+position+"+v.getId()="+id,Toast.LENGTH_SHORT).show();
-                if (position==15) {
+                if (position==14) {
 //                    list=list1;
 //                    View childAt7 = radio_rv.getChildAt(7);
 //                    ImageView iv_pic = (ImageView) childAt7.findViewById(R.id.adapter_radio_iv_pic);
 //                    iv_pic.setImageResource(R.drawable.category_down);
-                    RadioRCAdapter radioRCAdapter1 = new RadioRCAdapter(list1, getActivity());
-                    radio_rv.setAdapter(radioRCAdapter1);
-                    radioRCAdapter1.notifyDataSetChanged();
+//                    RadioRCAdapter radioRCAdapter1 = new RadioRCAdapter(list1, getActivity());
+//                    radio_rv.setAdapter(radioRCAdapter1);
+                    list.clear();
+                    for (int i=0;i<list1.size()-7;i++) {
+                        list.add(list1.get(i));
+                    }
+                    radioRCAdapter.notifyDataSetChanged();
                 }
                 if (position==7) {
-                    RadioRCAdapter radioRCAdapter2 = new RadioRCAdapter(list2, getActivity());
-                    radio_rv.setAdapter(radioRCAdapter2);
-                    radioRCAdapter2.notifyDataSetChanged();
+//                    RadioRCAdapter radioRCAdapter2 = new RadioRCAdapter(list2, getActivity());
+//                    radio_rv.setAdapter(radioRCAdapter2);
+                    list.clear();
+                    for (int i=0;i<list1.size();i++) {
+                        list.add(list1.get(i));
+                    }
+                    radioRCAdapter.notifyDataSetChanged();
                 }
             }
         });
