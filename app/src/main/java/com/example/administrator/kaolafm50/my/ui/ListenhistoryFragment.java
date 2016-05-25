@@ -39,7 +39,7 @@ public class ListenhistoryFragment extends BaseFragment {
         listenHistory_rv.setLayoutManager(linearLayoutManager);
         HistoryRecycleViewAdapter historyRecycleViewAdapter = new HistoryRecycleViewAdapter(list, getActivity());
         listenHistory_rv.setAdapter(historyRecycleViewAdapter);
-        for (int i=0;i<20;i++) {
+        for (int i=1;i<=100;i++) {
             list.add(""+i);
         }
         historyRecycleViewAdapter.notifyDataSetChanged();

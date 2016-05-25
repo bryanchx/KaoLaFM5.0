@@ -37,9 +37,9 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
     @Override
     public void onBindViewHolder(MyRecycleViewAdapter holder, int position) {
         holder.history_iv_icon.setImageResource(R.drawable.ic_launcher);
-        holder.history_tv_title.append(""+list.get(position));
+        holder.history_tv_title.setText("历史记录("+list.get(position)+")");
         holder.history_tv_msg.append("");
-        holder.history_tv_listenState.append("");
+        holder.history_tv_listenState.setText((int)(Math.random()*31)+"分钟前");
 
     }
 
