@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <!--搜索栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_title_height"
+        android:orientation="horizontal"
+        android:background="@color/public_red">
+    <EditText
+        android:id="@+id/discover_search_et"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@drawable/search_icon"
+        android:background="@drawable/search_input_bg"
+        android:hint="@string/discover_search_hint"
+        android:textColor="@color/public_gray"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:editable="false"
+        android:layout_height="40dp"/>
+        <ImageView
+            android:id="@+id/discover_play_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/icon_now_listening_06"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/discover_content_tl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/public_red"
+        app:tabSelectedTextColor="@color/public_red"
+        app:tabTextColor="#666"/>
+
+    <!--用来显示5个子页面(推荐、分类、电台、直播、主播)-->
+    <com.example.administrator.kaolafm50.others.widget.KaoLaViewPager
+        android:id="@+id/discover_content_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

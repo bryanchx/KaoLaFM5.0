@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.kaolafm50.others.ui.WebActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_title_height"
+        android:id="@+id/relativeLayout">
+        <ImageView
+            android:id="@+id/web_iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_anchor_time_press"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="title"
+            android:id="@+id/web_tv_title"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/btn_web_share_press"
+            android:id="@+id/web_iv_share"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+
+        <ImageView
+            android:id="@+id/web_iv_play"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_setting_play"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/web_iv_share"
+            android:layout_toStartOf="@+id/web_iv_share"/>
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/web_pb"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+    <WebView
+        android:id="@+id/web_content_wv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

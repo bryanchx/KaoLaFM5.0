@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="index_styleable">
+        <attr name="circle_radius" format="dimension"/>
+        <attr name="circle_padding" format="dimension"/>
+        <attr name="color_default" format="color|reference"/>
+        <attr name="color_selected" format="color|reference"/>
+        <attr name="default_stroke" format="boolean"/>
+    </declare-styleable>
+</resources>

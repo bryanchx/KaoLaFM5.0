@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:iv="http://schemas.android.com/apk/res-auto"
+    tools:context=".others.ui.GuideActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/guide_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <Button
+        android:id="@+id/guide_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/select_guide_btn"/>
+
+    <com.example.administrator.kaolafm50.others.widget.IndexView
+        android:id="@+id/guide_index_view"
+        iv:circle_padding="20dp"
+        iv:circle_radius="15dp"
+        iv:color_default="@android:color/darker_gray"
+        iv:color_selected="@android:color/holo_blue_dark"
+        iv:default_stroke="true"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

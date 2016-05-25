@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">KaoLaFM5.0</string>
+    <string name="title_activity_guide">GuideActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_rg_discovery">发现</string>
+    <string name="home_rg_my">我的</string>
+    <string name="home_rg_offline">离线</string>
+
+    <string name="discover_search_hint">人、节目、专辑</string>
+    <string name="dicover_tab_recommend">推荐</string>
+    <string name="dicover_tab_type">分类</string>
+    <string name="dicover_tab_radio">电台</string>
+    <string name="dicover_tab_live">直播</string>
+    <string name="dicover_tab_anchor">主播</string>
+    <string name="more">更多</string>
+
+</resources>

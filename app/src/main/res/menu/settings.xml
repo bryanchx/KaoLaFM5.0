@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/menu_setting_use_gprs_listen"
+            android:icon="@drawable/ic_setting_listen"
+            android:title="使用移动流量收听"/>
+        <item
+            android:id="@+id/menu_setting_use_gprs_download"
+            android:icon="@drawable/ic_setting_four_offline"
+            android:title="使用移动流量下载"/>
+    </group>
+    <item android:title="消息推送管理">
+        <menu>
+            <item
+                android:id="@+id/menu_settings_push"
+                android:icon="@drawable/ic_push_manager_msg"
+                android:title="推送管理"/>
+            <item
+                android:id="@+id/menu_settings_refuse"
+                android:icon="@drawable/ic_shield_manager"
+                android:title="屏蔽管理"/>
+        </menu>
+    </item>
+</menu>

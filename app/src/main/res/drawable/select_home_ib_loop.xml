@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item android:drawable="@drawable/one_loop_icon" android:state_pressed="true"/>-->
+    <!--<item android:drawable="@drawable/select_home_ib_loop" android:state_pressed="true"/>-->
+    <item android:drawable="@drawable/random_loop_icon" android:state_pressed="true"/>
+    <item android:drawable="@drawable/default_loop_icon"/>
+
+</selector>

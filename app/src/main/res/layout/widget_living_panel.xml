@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp">
+        <TextView
+            android:id="@+id/living_panel_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:text="mustListenTitle"/>
+        <TextView
+            android:id="@+id/living_panel_more_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="19dp"
+            android:drawableRight="@drawable/ic_rank_right_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/more"
+            android:layout_alignBottom="@+id/living_panel_title_tv"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="19dp"/>
+        <View
+            android:layout_below="@id/living_panel_more_tv"
+            style="@style/horizontal_line"
+            android:layout_marginTop="5dp"/>
+    </RelativeLayout>
+
+</merge>

@@ -1,0 +1,72 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/radio_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:layout_marginTop="5dp"
+            android:id="@+id/radio_vp_banner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scrollbars="horizontal"/>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/radio_tl_banner"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"/>
+
+
+        <RadioGroup
+            android:id="@+id/radio_rg_channel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/radio_rb_channel1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:gravity="center"
+                android:text="1"
+                android:drawableTop="@drawable/select_rb_bg_channel"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/radio_rb_channel2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:gravity="center"
+                android:text="2"
+                android:drawableTop="@drawable/select_rb_bg_channe2"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/radio_rb_channel3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:button="@null"
+                android:gravity="center"
+                android:drawableTop="@drawable/select_rb_bg_channe3"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/radio_rb_channel4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="4"
+                android:button="@null"
+                android:gravity="center"
+                android:drawableTop="@drawable/select_rb_bg_channe4"
+                android:layout_weight="1"/>
+        </RadioGroup>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/radio_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+</ScrollView>
+

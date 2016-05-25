@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:id="@+id/history_iv_icon"
+        android:src="@drawable/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="寂寞陪你睡"
+        android:textSize="18sp"
+        android:id="@+id/history_tv_title"
+        android:layout_marginTop="10dp"
+        android:layout_alignTop="@+id/history_iv_icon"
+        android:layout_toRightOf="@+id/history_iv_icon"
+        android:layout_toEndOf="@+id/history_iv_icon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="广播电台"
+        android:id="@+id/history_tv_msg"
+        android:layout_marginBottom="10dp"
+        android:layout_alignBottom="@+id/history_iv_icon"
+        android:layout_toRightOf="@+id/history_iv_icon"
+        android:layout_toEndOf="@+id/history_iv_icon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1小时前"
+        android:id="@+id/history_tv_listenState"
+        android:layout_marginRight="10dp"
+        android:layout_alignBottom="@+id/history_iv_icon"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+</RelativeLayout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/live_iv_pic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/live_iv_living"
+        android:src="@drawable/live_living"
+        android:layout_alignTop="@+id/live_iv_pic"
+        android:layout_toRightOf="@+id/live_iv_pic"
+        android:layout_toEndOf="@+id/live_iv_pic"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="programName"
+        android:id="@+id/live_tv_programName"
+        android:singleLine="true"
+        android:layout_marginLeft="8dp"
+        android:layout_alignTop="@+id/live_iv_living"
+        android:layout_toRightOf="@+id/live_iv_living"
+        android:layout_toEndOf="@+id/live_iv_living"/>
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/live_iv_pic_small"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/live_iv_pic"
+        android:layout_toEndOf="@+id/live_iv_pic"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="comperes"
+        android:id="@+id/live_tv_comperes"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/live_iv_pic_small"
+        android:layout_toEndOf="@+id/live_iv_pic_small"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/live_iv_gender"
+        android:src="@drawable/man"
+        android:layout_marginLeft="5dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/live_tv_comperes"
+        android:layout_toEndOf="@+id/live_tv_comperes"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/live_iv_online"
+        android:src="@drawable/listener_icon"
+        android:layout_alignBottom="@+id/live_iv_pic"
+        android:layout_alignLeft="@+id/live_iv_pic_small"
+        android:layout_alignStart="@+id/live_iv_pic_small"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="111"
+        android:id="@+id/live_tv_onLineNum"
+        android:layout_marginLeft="3dp"
+        android:layout_alignBottom="@+id/live_iv_online"
+        android:layout_toRightOf="@+id/live_iv_online"
+        android:layout_toEndOf="@+id/live_iv_online"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/live_iv_like"
+        android:src="@drawable/select_home_ib_play_good"
+        android:layout_marginLeft="15dp"
+        android:layout_alignBottom="@+id/live_tv_onLineNum"
+        android:layout_toRightOf="@+id/live_tv_onLineNum"
+        android:layout_toEndOf="@+id/live_tv_onLineNum"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2.7w"
+        android:id="@+id/live_tv_like"
+        android:layout_alignBottom="@+id/live_iv_online"
+        android:layout_toRightOf="@+id/live_iv_like"
+        android:layout_toEndOf="@+id/live_iv_like"/>
+
+</RelativeLayout>
