@@ -55,6 +55,9 @@ public class LivingCustomRBLayout extends LinearLayout implements View.OnClickLi
     @Override
     public void onClick(View v) {
         LogUtil.w("id="+v.getId());
+        LogUtil.w("View="+v);
+        LogUtil.w((v==live_custom_lcrb1)+"");
+
         live_custom_lcrb1.setSelected(true);
 //        v.setSelected(true);
 //        onMyItemClickListener.onMyClick(v,live_custom_lcrb1.getId());

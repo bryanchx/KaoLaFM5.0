@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,10 +15,10 @@ import android.widget.TextView;
 
 import com.example.administrator.kaolafm50.R;
 import com.example.administrator.kaolafm50.discover.live_page.adapter.BannerPagerAdapterLive;
+import com.example.administrator.kaolafm50.discover.live_page.adapter.ForecastViewPagerAdapter;
 import com.example.administrator.kaolafm50.discover.live_page.bean.Live;
 import com.example.administrator.kaolafm50.discover.live_page.bean.SpecialInLive;
 import com.example.administrator.kaolafm50.discover.live_page.widget.LivingAnchorLayout1;
-import com.example.administrator.kaolafm50.discover.live_page.widget.LivingCustomRBLayout;
 import com.example.administrator.kaolafm50.discover.live_page.widget.LivingItem;
 import com.example.administrator.kaolafm50.discover.live_page.widget.LivingLayout1;
 import com.example.administrator.kaolafm50.discover.live_page.widget.LivingPanel;
@@ -46,6 +47,8 @@ public class LiveFragment extends BaseFragment {
     private LinearLayout live_ll;
     private int i=0;
     private Handler mHandler;
+    private TabLayout live_tl_live_forecast;
+    private ViewPager live_vp_live_forecast;
 
     @Override
     protected int getLayoutId() {
@@ -57,6 +60,8 @@ public class LiveFragment extends BaseFragment {
         live_vp_banner = (ViewPager) root.findViewById(R.id.live_vp_banner);
         live_tl_banner = (TabLayout) root.findViewById(R.id.live_tl_banner);
         live_ll = (LinearLayout) root.findViewById(R.id.live_ll);
+        live_tl_live_forecast = (TabLayout) root.findViewById(R.id.live_tl_live_forecast);
+        live_vp_live_forecast = (ViewPager) root.findViewById(R.id.live_vp_live_forecast);
     }
 
     @Override
@@ -135,19 +140,40 @@ public class LiveFragment extends BaseFragment {
      * @param live
      */
     private void showForecast(Live live) {
-        final LivingCustomRBLayout livingCustomRBLayout = new LivingCustomRBLayout(getActivity());
-        livingCustomRBLayout.setonMyItemClickListener(new LivingCustomRBLayout.OnMyItemClickListener() {
 
-            private View lastClickView=livingCustomRBLayout.getFirstView();
-            private boolean isFirstClick=true;
-            //点击改变控件颜色
-            @Override
-            public void onMyClick(View view, int firtItemId) {
-//
+       List<Fragment> list=new ArrayList<>();
+        list.add(new TodayFragment());
+        list.add(new TomorrowFragment());
+        list.add(new AftertomorrowFragment());
+        ForecastViewPagerAdapter adapter = new ForecastViewPagerAdapter(getActivity().getSupportFragmentManager(), list);
+        live_vp_live_forecast.setAdapter(adapter);
+        live_tl_live_forecast.setupWithViewPager(live_vp_live_forecast);
+
+        for (int i=0;i<live_tl_live_forecast.getTabCount();i++) {
+            TabLayout tl_live_forecast = this.live_tl_live_forecast;
+            TabLayout.Tab tab = tl_live_forecast.getTabAt(i);
+            View tabView = getTabView(i);
+            if (i==0) {
+                tabView.setSelected(true);
             }
-        });
-        live_ll.addView(livingCustomRBLayout);
+            tab.setCustomView(tabView);
+        }
+        live_vp_live_forecast.setCurrentItem(0);
     }
+
+    private View getTabView(int position){
+
+        String[] dates={"今天","明天","后天"};
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.live_custom_tab, null, false);
+        TextView date = (TextView) view.findViewById(R.id.live_custom_tab_date_tv);
+        TextView time = (TextView) view.findViewById(R.id.live_custom_tab_time_tv);
+        date.setText(dates[position]);
+        time.setText("time");
+        return view;
+    }
+    /**
+     * 自定义tablayout布局
+     */
 
 
     private void showPanel2(Live live) {
@@ -291,3 +317,16 @@ public class LiveFragment extends BaseFragment {
 //                    time1.setTextColor(Color.BLACK);
 //                }
 //                lastClickView=view;
+
+//    final LivingCustomRBLayout livingCustomRBLayout = new LivingCustomRBLayout(getActivity());
+//livingCustomRBLayout.setonMyItemClickListener(new LivingCustomRBLayout.OnMyItemClickListener() {
+//
+//private View lastClickView=livingCustomRBLayout.getFirstView();
+//private boolean isFirstClick=true;
+////点击改变控件颜色
+//@Override
+//public void onMyClick(View view, int firtItemId) {
+////
+//        }
+//        });
+//        live_ll.addView(livingCustomRBLayout);
