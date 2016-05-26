@@ -47,6 +47,10 @@ public class RadioRCAdapter extends RecyclerView.Adapter<RadioRCAdapter.MyViewHo
         } else if (position==15) {
             holder.adapter_radio_iv_pic.setImageResource(R.drawable.category_up);
         }
+        if (list.size()==8&&position==7) {
+            holder.adapter_radio_tv_name.setText("");
+            holder.adapter_radio_iv_pic.setImageResource(R.drawable.category_down);
+        }
     }
 
     @Override

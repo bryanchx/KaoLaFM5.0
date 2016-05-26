@@ -177,18 +177,18 @@ public class Radio {
          * 广告
          */
         public static final int TYPE_BANNER=1;
-////        /**
-////         * 正在直播
-////         */
-////        public static final int TYPE_ISLIVING=14;
-//        /**
-//         * 主播
-//         */
-//        public static final int TYPE_ANCHOR=26;
-//        /**
-//         * 精选直播预告
-//         */
-//        public static final int TYPE_ADVANCE_NOTICE=35;
+        /**
+         * 智能精选
+         */
+        public static final int TYPE_SELECTION=34;
+        /**
+         * 热播栏目
+         */
+        public static final int TYPE_HOT_PLAY=3;
+        /**
+         * 主播
+         */
+        public static final int TYPE_ANCHOR=26;
 //        /**
 //         * 专题、活动、商城
 //         */
