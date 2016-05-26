@@ -2,11 +2,9 @@ package com.example.administrator.kaolafm50.others.ui;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-
-import com.example.administrator.kaolafm50.R;
-import com.example.administrator.kaolafm50.others.utils.ActivityJumpManager;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 public class BannerActivity extends AppCompatActivity {
 
@@ -15,26 +13,13 @@ public class BannerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_banner);
+        ImageView imageView = new ImageView(this);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-        new Thread(){
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                mHandler.sendEmptyMessage(0);
-            }
-        }.start();
-        mHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                ActivityJumpManager.jumpToHome(BannerActivity.this);
-                finish();
-            }
-        };
+        imageView.setLayoutParams(layoutParams);
+        setContentView(imageView);
+
+
     }
 
 }
