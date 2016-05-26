@@ -8,7 +8,7 @@
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="@drawable/select_live_custom_rb"
+            android:background="@drawable/custom_rb_bg_press"
             android:layout_weight="1"
             android:layout_margin="15dp"
             android:layout_height="wrap_content"/>
@@ -30,14 +30,4 @@
             android:layout_weight="1"
             android:layout_margin="15dp"
             android:layout_height="wrap_content"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@drawable/select_live_custom_rb"/>
-        <LinearLayout
-            android:background="@drawable/select_live_custom_rb"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
 </LinearLayout>

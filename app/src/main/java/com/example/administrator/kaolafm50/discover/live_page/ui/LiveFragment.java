@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -134,8 +135,17 @@ public class LiveFragment extends BaseFragment {
      * @param live
      */
     private void showForecast(Live live) {
-        LivingCustomRBLayout livingCustomRBLayout = new LivingCustomRBLayout(getActivity());
+        final LivingCustomRBLayout livingCustomRBLayout = new LivingCustomRBLayout(getActivity());
+        livingCustomRBLayout.setonMyItemClickListener(new LivingCustomRBLayout.OnMyItemClickListener() {
 
+            private View lastClickView=livingCustomRBLayout.getFirstView();
+            private boolean isFirstClick=true;
+            //点击改变控件颜色
+            @Override
+            public void onMyClick(View view, int firtItemId) {
+//
+            }
+        });
         live_ll.addView(livingCustomRBLayout);
     }
 
@@ -263,3 +273,21 @@ public class LiveFragment extends BaseFragment {
 
 
 }
+//LogUtil.w("firtItemId="+firtItemId);
+//                LogUtil.w("view="+view.getId());
+//                LogUtil.w("lastClickView="+lastClickView);
+//
+//                view.setBackgroundResource(R.drawable.custom_rb_bg_press);
+//                TextView date = (TextView) view.findViewById(R.id.widget_live_item_date_tv);
+//                TextView time = (TextView) view.findViewById(R.id.widget_live_item_time_tv);
+//                date.setTextColor(Color.RED);
+//                time.setTextColor(Color.RED);
+//
+//                if (lastClickView!=null) {
+//                    lastClickView.setBackgroundResource(R.drawable.custom_rb_bg_normal);
+//                    TextView date1 = (TextView) lastClickView.findViewById(R.id.widget_live_item_date_tv);
+//                    TextView time1 = (TextView) lastClickView.findViewById(R.id.widget_live_item_time_tv);
+//                    date1.setTextColor(Color.BLACK);
+//                    time1.setTextColor(Color.BLACK);
+//                }
+//                lastClickView=view;
