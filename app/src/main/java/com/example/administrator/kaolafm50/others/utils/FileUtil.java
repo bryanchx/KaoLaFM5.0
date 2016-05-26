@@ -8,6 +8,7 @@ import java.io.File;
  * Created by Administrator on 16-5-20.
  */
 public class FileUtil {
+    public static final File DIR_CACHE=createDir("cache");
     public static final File IMAGE_DIR=createDir("image");
     public static final File APK_DIR=createDir("apk");
     public static final File AUDIO_DIR=createDir("audio");

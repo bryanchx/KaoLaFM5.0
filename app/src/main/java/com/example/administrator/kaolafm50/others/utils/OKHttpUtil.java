@@ -1,5 +1,14 @@
 package com.example.administrator.kaolafm50.others.utils;
 
+import android.os.Handler;
+
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.squareup.okhttp.ResponseBody;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -7,17 +16,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 /**
  * Created by Administrator on 16-5-26.
  */
 public class OKHttpUtil {
+
+    private Handler handler=new Handler();
     enum RequestType{
         GET,
         POST
@@ -33,6 +38,7 @@ public class OKHttpUtil {
         }
         return client;
     }
+
     public static void doGet(String url,final KalaTask.IRequestCallback callback){
         //创建一个请求客户端
         getOkHttpClientInstance();
@@ -54,14 +60,14 @@ public class OKHttpUtil {
         call.enqueue(new Callback() {
 
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(Request request, IOException e) {
                 if (callback!=null) {
                     callback.error(e.getMessage());
                 }
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Response response) throws IOException {
                 ResponseBody body = response.body();
                 body.byteStream();
                 body.charStream();
@@ -86,7 +92,7 @@ public class OKHttpUtil {
         call.enqueue(new Callback() {
 
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(Request request, IOException e) {
                 LogUtil.e(e.getMessage());
                 if (callback!=null) {
                     callback.error(e.getMessage());
@@ -94,7 +100,7 @@ public class OKHttpUtil {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Response response) throws IOException {
                 ResponseBody body = response.body();
                 body.byteStream();
                 Reader reader = body.charStream();
@@ -107,11 +113,16 @@ public class OKHttpUtil {
                 String result = resultBuffer.toString();
                 LogUtil.w("result="+result);
                 if (callback!=null) {
-                    callback.success(response);
+                    callback.success(result);
                 }
                 reader.close();
                 bufferedReader.close();
             }
+
+
+
+
+
         });
     }
     public static void downLoad(String url, final File dir, final String rename, final KalaTask.IDownLoadListener listener){
@@ -124,7 +135,7 @@ public class OKHttpUtil {
         call.enqueue(new Callback() {
 
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(Request request, IOException e) {
                 LogUtil.e("请求失败了："+e.getMessage());
                 if (listener!=null) {
                     listener.error();
@@ -132,7 +143,7 @@ public class OKHttpUtil {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Response response) throws IOException {
                 ResponseBody body = response.body();
                 InputStream inputStream = body.byteStream();
                 int read=-1;
@@ -166,6 +177,7 @@ public class OKHttpUtil {
                 fos.flush();
                 fos.close();
             }
+
         });
 
     }

@@ -21,15 +21,16 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".others.ui.BannerActivity">
-        </activity>
-        <activity android:name=".others.ui.HomePlayerActivity">
-        </activity>
-        <activity android:name=".others.ui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".others.ui.HomePlayerActivity">
+        </activity>
+        <activity android:name=".others.ui.HomeActivity">
+
         </activity>
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for

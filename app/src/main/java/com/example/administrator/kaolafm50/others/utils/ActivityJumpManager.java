@@ -7,6 +7,7 @@ import com.example.administrator.kaolafm50.discover.live_page.bean.SpecialInLive
 import com.example.administrator.kaolafm50.discover.recommend_page.bean.Special;
 import com.example.administrator.kaolafm50.others.ui.BannerActivity;
 import com.example.administrator.kaolafm50.others.ui.GuideActivity;
+import com.example.administrator.kaolafm50.others.ui.HomeActivity;
 import com.example.administrator.kaolafm50.others.ui.HomePlayerActivity;
 import com.example.administrator.kaolafm50.others.ui.WebActivity;
 
@@ -15,6 +16,10 @@ import com.example.administrator.kaolafm50.others.ui.WebActivity;
  */
 public class ActivityJumpManager {
     public static void jumpToHome(Activity activity){
+        Intent intent = new Intent(activity, HomeActivity.class);
+        activity.startActivity(intent);
+    }
+    public static void jumpToHomePlayer(Activity activity){
         Intent intent = new Intent(activity, HomePlayerActivity.class);
         activity.startActivity(intent);
     }
