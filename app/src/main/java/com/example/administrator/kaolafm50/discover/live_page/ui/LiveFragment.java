@@ -129,13 +129,13 @@ public class LiveFragment extends BaseFragment {
 
     }
 
+    /**
+     * 直播预告
+     * @param live
+     */
     private void showForecast(Live live) {
         LivingCustomRBLayout livingCustomRBLayout = new LivingCustomRBLayout(getActivity());
-//        TextView viewById = (TextView) livingCustomRBLayout.getChildAt(0).
-//                findViewById(R.id.widget_live_item_date_tv);
-//        viewById.setText("shit!");
-//        LivingCustomRBItem living = (LivingCustomRBItem) livingCustomRBLayout.getChildAt(1);
-//        living.setBackgroundResource(R.drawable.select_live_custom_rb);
+
         live_ll.addView(livingCustomRBLayout);
     }
 
@@ -147,6 +147,10 @@ public class LiveFragment extends BaseFragment {
         live_ll.addView(livingPanel1);
     }
 
+    /**
+     * 主播
+     * @param live
+     */
     private void showAnchor(Live live) {
         LivingAnchorLayout1 livingAnchorLayout1 = new LivingAnchorLayout1(getActivity(), live);
         live_ll.addView(livingAnchorLayout1);
@@ -169,6 +173,10 @@ public class LiveFragment extends BaseFragment {
         }
     }
 
+    /**
+     * 单张广告图片
+     * @param live
+     */
     private void showImage(Live live) {
         ImageView imageView = new ImageView(getActivity());
         LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,240);
@@ -180,11 +188,19 @@ public class LiveFragment extends BaseFragment {
         live_ll.addView(imageView);
     }
 
+    /**
+     * 版块的表头（点击更多）
+     * @param live
+     */
     private void showPanel(Live live) {
         LivingPanel livingPanel = new LivingPanel(getActivity(), live);
         live_ll.addView(livingPanel);
     }
 
+    /**
+     * 正在直播版块
+     * @param live
+     */
     private void showLiving(Live live) {
         List<SpecialInLive> list = live.getDataList();
         for (int i=0;i<list.size();i++) {
@@ -193,6 +209,10 @@ public class LiveFragment extends BaseFragment {
         }
     }
 
+    /**
+     * viewpage广告视图
+     * @param live
+     */
     private void showBanner(Live live) {
         List<ImageView> imageViews=new ArrayList<>();
         List<SpecialInLive> list=live.getDataList();
@@ -206,11 +226,14 @@ public class LiveFragment extends BaseFragment {
         live_vp_banner.setAdapter(adapterLive);
         live_tl_banner.setupWithViewPager(live_vp_banner);
 
-        //viewpage滚动
+        //viewpage广告水平滚动
         scrollViewPager();
 
     }
 
+    /**
+     * 水平滚动viewpage（广告）
+     */
     private void scrollViewPager() {
 
         new Thread(){
