@@ -139,6 +139,7 @@ public class LiveFragment extends BaseFragment {
         live_ll.addView(livingCustomRBLayout);
     }
 
+
     private void showPanel2(Live live) {
         LivingPanel1 livingPanel1 = new LivingPanel1(getActivity(), live);
         TextView living_panel_more_tv = (TextView) livingPanel1.findViewById(R.id.living_panel_more_tv);
