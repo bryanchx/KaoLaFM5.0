@@ -34,6 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -141,7 +142,7 @@ public class LiveFragment extends BaseFragment {
      */
     private void showForecast(Live live) {
 
-       List<Fragment> list=new ArrayList<>();
+        List<Fragment> list=new ArrayList<>();
         list.add(new TodayFragment());
         list.add(new TomorrowFragment());
         list.add(new AftertomorrowFragment());
@@ -161,19 +162,26 @@ public class LiveFragment extends BaseFragment {
         live_vp_live_forecast.setCurrentItem(0);
     }
 
-    private View getTabView(int position){
 
+    /**
+     * 得到自定义的tablayout布局
+     */
+    private View getTabView(int position){
+        Calendar now = Calendar.getInstance();
+        int month=now.get(Calendar.MONTH)+1;
+        int day=now.get(Calendar.DAY_OF_MONTH);
         String[] dates={"今天","明天","后天"};
+        String[] times={month+"月"+day+"日",month+"月"+(day+1)+"日",month+"月"+(day+2)+"日"};
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.live_custom_tab, null, false);
         TextView date = (TextView) view.findViewById(R.id.live_custom_tab_date_tv);
         TextView time = (TextView) view.findViewById(R.id.live_custom_tab_time_tv);
         date.setText(dates[position]);
-        time.setText("time");
+        time.setText(times[position]);
+
+//        int widthPixels = getResources().getDisplayMetrics().widthPixels;
+//        view.setLayoutParams(new LinearLayout.LayoutParams(widthPixels/3,widthPixels/3/2));
         return view;
     }
-    /**
-     * 自定义tablayout布局
-     */
 
 
     private void showPanel2(Live live) {

@@ -22,7 +22,7 @@ import java.io.Reader;
  */
 public class OKHttpUtil {
 
-    private Handler handler=new Handler();
+    private static Handler handler=new Handler();
     enum RequestType{
         GET,
         POST
@@ -60,19 +60,34 @@ public class OKHttpUtil {
         call.enqueue(new Callback() {
 
             @Override
-            public void onFailure(Request request, IOException e) {
+            public void onFailure(Request request, final IOException e) {
                 if (callback!=null) {
-                    callback.error(e.getMessage());
+                    handler.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            callback.error(e.getMessage());
+
+                        }
+                    });
                 }
             }
 
             @Override
-            public void onResponse(Response response) throws IOException {
+            public void onResponse(final Response response) throws IOException {
                 ResponseBody body = response.body();
                 body.byteStream();
                 body.charStream();
                 if (callback!=null) {
-                    callback.success(response);
+                    handler.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            callback.success(response);
+
+                        }
+                    });
+
                 }
             }
         });
@@ -92,10 +107,17 @@ public class OKHttpUtil {
         call.enqueue(new Callback() {
 
             @Override
-            public void onFailure(Request request, IOException e) {
+            public void onFailure(Request request, final IOException e) {
                 LogUtil.e(e.getMessage());
                 if (callback!=null) {
-                    callback.error(e.getMessage());
+                    handler.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            callback.error(e.getMessage());
+
+                        }
+                    });
                 }
             }
 
@@ -110,10 +132,17 @@ public class OKHttpUtil {
                 while ((line=bufferedReader.readLine())!=null) {
                     resultBuffer.append(line);
                 }
-                String result = resultBuffer.toString();
+                final String result = resultBuffer.toString();
                 LogUtil.w("result="+result);
                 if (callback!=null) {
-                    callback.success(result);
+                    handler.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            callback.success(result);
+
+                        }
+                    });
                 }
                 reader.close();
                 bufferedReader.close();

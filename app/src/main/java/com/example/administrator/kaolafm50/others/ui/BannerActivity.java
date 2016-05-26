@@ -21,7 +21,7 @@ public class BannerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final ImageView imageView = new ImageView(this);
-        imageView.setImageResource(R.drawable.ic_launcher);
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
         imageView.setLayoutParams(layoutParams);
@@ -42,19 +42,12 @@ public class BannerActivity extends AppCompatActivity {
                         final String img = result.getString("img");
                         LogUtil.w("img=" + img);
 
-
-                                runOnUiThread(new Runnable() {
-
-                                    @Override
-                                    public void run() {
-                                        Picasso.with(BannerActivity.this)
-                                                .load(img)
-                                                .placeholder(R.drawable.album_hidden)//占位图片
-//                                        .transform(new CircleTransform(true))
-                                                .error(R.drawable.no_send)//加载失败显示的图片
-                                                .into(imageView);
-                                    }
-                                });
+                        Picasso.with(BannerActivity.this)
+                                .load(img)
+                                .placeholder(R.drawable.album_hidden)//占位图片
+//                                        .transform(new CircleTransform(false))
+                                .error(R.drawable.no_send)//加载失败显示的图片
+                                .into(imageView);
 
                     }
 
