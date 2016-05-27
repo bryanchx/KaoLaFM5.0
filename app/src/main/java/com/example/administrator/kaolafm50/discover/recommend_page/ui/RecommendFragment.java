@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -52,6 +54,7 @@ public class RecommendFragment extends BaseFragment {
     private SpecialPanel panel;
     private Handler mHandler;
     private int i=0;
+    private View startView;
 
     private PullToRefreshScrollView pullToRefreshScrollView;
 
@@ -63,9 +66,11 @@ public class RecommendFragment extends BaseFragment {
     @Override
     protected void initView() {
         pullToRefreshScrollView= (PullToRefreshScrollView) root;
-        recommend_banner_vp= (ViewPager) root.findViewById(R.id.recommend_banner_vp);
-        recommend_tl = (TabLayout) root.findViewById(R.id.recommend_tl);
-        recommend_rv = (RecyclerView) root.findViewById(R.id.recommend_rv);
+
+        startView = LayoutInflater.from(getActivity()).inflate(R.layout.dis_recommend_upper, null, false);
+        recommend_banner_vp= (ViewPager) startView.findViewById(R.id.recommend_banner_vp);
+        recommend_tl = (TabLayout) startView.findViewById(R.id.recommend_tl);
+        recommend_rv = (RecyclerView) startView.findViewById(R.id.recommend_rv);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -87,12 +92,19 @@ public class RecommendFragment extends BaseFragment {
 
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+                //在刷新请求成功后，先清除所有，然后后续添加（下拉刷新）
+                recommend_ll.removeAllViews();
                 requestData();
             }
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
-                requestData();
+//                //在刷新请求成功后，先清除所有，然后后续添加（上拉加载）
+//                recommend_ll.removeAllViews();
+//                requestData();
+                //让上拉加载后回位
+                pullToRefreshScrollView.onRefreshComplete();
+                Toast.makeText(getActivity(),"不好意思，后续功能待开发。。。",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -124,11 +136,12 @@ public class RecommendFragment extends BaseFragment {
 
                         List<Recommend> list=Recommend.arrayRecommendFromData(dataList.toString());
 
-                        //防止下拉刷新数据重复的方案，全部动态添加
-                        //在刷新请求成功后，先清除所有，然后添加
-                        //显示广告
+
+                        //显示广告和进入页面
                         showBanner(list.get(0));
                         showEnter(list.get(1));
+                        //添加广告和进入页面
+                        recommend_ll.addView(startView);
 
                         for (int i=0;i<list.size();i++) {
                             Recommend recommend = list.get(i);
@@ -168,12 +181,15 @@ public class RecommendFragment extends BaseFragment {
 
     }
 
+    //进入
     private void showEnter(Recommend recommend) {
         List<Special> dataList=recommend.getDataList();
         enterList.addAll(dataList);
         enterAdapter.notifyDataSetChanged();
+
     }
 
+    //广告展示
     private void showBanner(Recommend recommend) {
         List<Special> dataList=recommend.getDataList();
         List<ImageView> views=new ArrayList<>();
@@ -190,33 +206,6 @@ public class RecommendFragment extends BaseFragment {
         //viewpage滚动
         scrollViewPager();
     }
-
-//    private void showMustListen(Recommend recommend) {
-//        panel = new SpecialPanel(getActivity(), recommend);
-//        recommend_ll.addView(panel);
-//        List<Special> dataList = recommend.getDataList();
-//        if (dataList.size() > 3) {
-//            List<Special> specials1 = dataList.subList(0, 3);
-//            List<Special> specials2 = dataList.subList(3, 6);
-//            SpecialLayout specialLayout1 = new SpecialLayout(getActivity(), specials1);
-//            SpecialLayout specialLayout2 = new SpecialLayout(getActivity(), specials2);
-//            recommend_ll.addView(specialLayout1);
-//            recommend_ll.addView(specialLayout2);
-//        } else {
-//            SpecialLayout specialLayout = new SpecialLayout(getActivity(), dataList);
-//            recommend_ll.addView(specialLayout);
-//        }
-//    }
-
-//    private void showTalkshow(Recommend recommend) {
-//        panel = new SpecialPanel(getActivity(), recommend);
-//        recommend_ll.addView(panel);
-//    }
-//    private void showTalkshow1(Recommend recommend) {
-//        SpecialLayout specialLayout = new SpecialLayout(getActivity(), recommend.getDataList());
-//        recommend_ll.addView(specialLayout);
-//
-//    }
 
     private void addSpecialPanel(Recommend recommend){
         SpecialPanel specialPanel = new SpecialPanel(getActivity(), recommend);

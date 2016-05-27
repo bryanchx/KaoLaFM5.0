@@ -18,16 +18,17 @@
         android:drawableLeft="@drawable/search_icon"
         android:background="@drawable/search_input_bg"
         android:hint="@string/discover_search_hint"
-        android:textColor="@color/public_gray"
+        android:textColor="#fff"
+        android:textSize="15sp"
         android:gravity="center_vertical"
         android:drawablePadding="10dp"
         android:editable="false"
         android:layout_height="40dp"/>
         <ImageView
             android:id="@+id/discover_play_iv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/icon_now_listening_06"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_now_listening_06"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>

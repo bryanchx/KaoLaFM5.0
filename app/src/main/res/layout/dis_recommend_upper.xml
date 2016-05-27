@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<app:LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:app="http://schemas.android.com/apk/res-auto"
                   android:orientation="vertical"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/recommend_ll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
         <android.support.v4.view.ViewPager
             android:layout_marginTop="5dp"
             android:id="@+id/recommend_banner_vp"
             android:layout_width="match_parent"
-            android:layout_height="200dp">
-
-        </android.support.v4.view.ViewPager>
+            android:layout_height="200dp"/>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/recommend_tl"
@@ -29,5 +22,4 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-    </LinearLayout>
-</app:LinearLayout>
+</LinearLayout>

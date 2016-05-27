@@ -4,10 +4,9 @@
              android:layout_height="match_parent"
              tools:context="com.example.administrator.kaolafm50.discover.live_page.ui.TodayFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/live_today_lv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="今天"/>
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>

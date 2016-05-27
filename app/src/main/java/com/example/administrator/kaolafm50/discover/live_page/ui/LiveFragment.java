@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.administrator.kaolafm50.R;
 import com.example.administrator.kaolafm50.discover.live_page.adapter.BannerPagerAdapterLive;
 import com.example.administrator.kaolafm50.discover.live_page.adapter.ForecastViewPagerAdapter;
+import com.example.administrator.kaolafm50.discover.live_page.bean.HostInDataInlive;
 import com.example.administrator.kaolafm50.discover.live_page.bean.Live;
 import com.example.administrator.kaolafm50.discover.live_page.bean.SpecialInLive;
 import com.example.administrator.kaolafm50.discover.live_page.widget.LivingAnchorLayout1;
@@ -50,6 +51,9 @@ public class LiveFragment extends BaseFragment {
     private Handler mHandler;
     private TabLayout live_tl_live_forecast;
     private ViewPager live_vp_live_forecast;
+    private static List<HostInDataInlive> listDate;
+    private static List<HostInDataInlive> listDate2;
+    private static List<HostInDataInlive> listDate3;
 
     @Override
     protected int getLayoutId() {
@@ -144,6 +148,18 @@ public class LiveFragment extends BaseFragment {
         live_tl_live_forecast = (TabLayout) view.findViewById(R.id.live_tl_live_forecast);
         live_vp_live_forecast = (ViewPager) view.findViewById(R.id.live_vp_live_forecast);
         List<Fragment> list=new ArrayList<>();
+        //从live中得到DateDtoLive，通过公开方法供3个Fragment调用
+
+        SpecialInLive specialInLive = live.getDataList().get(0);
+        listDate= specialInLive.getDataList();
+
+        SpecialInLive specialInLive2 = live.getDataList().get(1);
+        listDate2= specialInLive2.getDataList();
+
+        SpecialInLive specialInLive3 = live.getDataList().get(2);
+        listDate3= specialInLive3.getDataList();
+
+
         list.add(new TodayFragment());
         list.add(new TomorrowFragment());
         list.add(new AftertomorrowFragment());
@@ -164,6 +180,27 @@ public class LiveFragment extends BaseFragment {
         live_ll.addView(view);
     }
 
+    //公开给today获取数据的方法
+    public static List<HostInDataInlive> getList(){
+        if (listDate!=null) {
+            return listDate;
+        }
+        return null;
+    }
+    //公开给tomorrow获取数据的方法
+    public static List<HostInDataInlive> getList2(){
+        if (listDate!=null) {
+            return listDate2;
+        }
+        return null;
+    }
+    //公开给aftertomorrow获取数据的方法
+    public static List<HostInDataInlive> getList3(){
+        if (listDate!=null) {
+            return listDate3;
+        }
+        return null;
+    }
 
     /**
      * 得到自定义的tablayout布局

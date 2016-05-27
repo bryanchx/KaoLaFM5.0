@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_spl"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
     <!--侧边菜单-->
 <!--<android.support.design.widget.NavigationView-->
     <!--android:id="@+id/home_nv"-->
@@ -21,7 +20,6 @@
     android:background="#f00"/>
 
 <LinearLayout
-
     android:id="@+id/home_content_ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -41,7 +39,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#ccc"
         android:paddingTop="5dp">
         <RadioButton
             android:id="@+id/home_discovery_rb"

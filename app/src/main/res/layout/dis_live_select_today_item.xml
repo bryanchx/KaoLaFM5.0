@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
+                android:layout_height="70dp">
 
     <TextView
         android:id="@+id/select_today_tv_time"
@@ -10,7 +10,7 @@
         android:singleLine="true"
         android:ellipsize="end"
         android:text="18:00"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -24,7 +24,9 @@
         android:ellipsize="end"
         android:text="租房诚可贵，地铁价更高。"
         android:textSize="16dp"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/select_today_tv_time"
         android:layout_toEndOf="@+id/select_today_tv_time"/>
@@ -33,7 +35,7 @@
         android:id="@+id/select_today_iv_anchor"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="3dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@+id/select_today_tv_title"
@@ -47,8 +49,8 @@
         android:singleLine="true"
         android:ellipsize="end"
         android:text="小毛驴,王铁蛋"
-        android:layout_marginBottom="8dp"
-        android:layout_alignBottom="@+id/select_today_iv_anchor"
+        android:layout_marginTop="8dp"
+        android:layout_alignTop="@+id/select_today_iv_anchor"
         android:layout_toRightOf="@+id/select_today_iv_anchor"
         android:layout_toEndOf="@+id/select_today_iv_anchor"/>
 
@@ -75,7 +77,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:id="@+id/select_today_tv_head_icon"
         android:src="@drawable/select_live_forecast_head_icon"
         android:layout_marginRight="20dp"
         android:layout_centerVertical="true"

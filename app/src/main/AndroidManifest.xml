@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".others.ui.MainActivity">
         </activity>
-
+        <activity android:name=".others.ui.BaseActivity">
+        </activity>
         <activity
             android:name=".others.ui.GuideActivity"
             android:label="@string/title_activity_guide"
