@@ -2,8 +2,8 @@ package com.example.administrator.kaolafm50.others.utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Parcelable;
 
-import com.example.administrator.kaolafm50.discover.live_page.bean.SpecialInLive;
 import com.example.administrator.kaolafm50.discover.recommend_page.bean.Special;
 import com.example.administrator.kaolafm50.others.ui.BannerActivity;
 import com.example.administrator.kaolafm50.others.ui.GuideActivity;
@@ -39,9 +39,9 @@ public class ActivityJumpManager {
         activity.startActivity(intent);
 
     }
-    public static void jumpToPlay(Activity activity, SpecialInLive specialInLive){
+    public static void jumpToPlay(Activity activity, Parcelable parcelable){
         Intent intent=new Intent(activity,HomePlayerActivity.class);
-        intent.putExtra("specialInLive",specialInLive);
+        intent.putExtra("parcelable",parcelable);
         intent.putExtra("which","live");
         activity.startActivity(intent);
 

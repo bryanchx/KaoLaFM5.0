@@ -21,6 +21,8 @@ import java.io.Reader;
  * Created by Administrator on 16-5-26.
  */
 public class OKHttpUtil {
+    //广告页的URL地址
+    public static String URL_BANNER= "http://api.kaolafm.com/api/v4/splashscreen/list?timezone=28800&installid=10000&udid=4a0dad0a10c011ced7fe02269b2cc5e3&sessionid=4a0dad0a10c011ced7fe02269b2cc5e31464243407711&imsi=460026027461772&operator=1&lon=0.0&lat=0.0&network=1&timestamp=1464243407&sign=bd270ebbc8b4bfe1079d5e811461f809&resolution=1080*1794&devicetype=0&channel=upgrade&version=4.8.1&appid=0&";
 
     private static Handler handler=new Handler();
     enum RequestType{

@@ -1,13 +1,42 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".offline.OfflineFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context=".offline.OfflineFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--标题栏-->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="离线"/>
+        android:layout_height="@dimen/public_title_height">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/offline_titlebar_title_tv"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="离线"
+            android:gravity="center"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:singleLine="true"/>
+        <ImageView
+            android:id="@+id/offline_titlebar_play_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+
+            android:layout_alignParentRight="true"
+            android:background="@drawable/icon_now_listening_06"/>
+    </RelativeLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/offline_srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/offline_content_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>
+

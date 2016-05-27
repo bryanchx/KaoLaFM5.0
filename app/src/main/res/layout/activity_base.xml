@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.administrator.kaolafm50.others.ui.BaseActivity">
+
+    <!--标题栏-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_title_height">
+        <ImageView
+            android:id="@+id/base_title_back_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:src="@drawable/btn_back_press"/>
+        <TextView
+            android:id="@+id/base_titlebar_title_tv"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:singleLine="true"/>
+        <ImageView
+            android:id="@+id/base_titlebar_play_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/icon_now_listening_06"/>
+    </RelativeLayout>
+    <!--子类显示内容-->
+    <LinearLayout
+        android:id="@+id/base_content_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </LinearLayout>
+</LinearLayout>
