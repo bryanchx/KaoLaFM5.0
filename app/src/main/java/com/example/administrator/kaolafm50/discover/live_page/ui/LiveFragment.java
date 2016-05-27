@@ -61,8 +61,7 @@ public class LiveFragment extends BaseFragment {
         live_vp_banner = (ViewPager) root.findViewById(R.id.live_vp_banner);
         live_tl_banner = (TabLayout) root.findViewById(R.id.live_tl_banner);
         live_ll = (LinearLayout) root.findViewById(R.id.live_ll);
-        live_tl_live_forecast = (TabLayout) root.findViewById(R.id.live_tl_live_forecast);
-        live_vp_live_forecast = (ViewPager) root.findViewById(R.id.live_vp_live_forecast);
+
     }
 
     @Override
@@ -141,7 +140,9 @@ public class LiveFragment extends BaseFragment {
      * @param live
      */
     private void showForecast(Live live) {
-
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.dis_live_select_carefully_forecast, null, false);
+        live_tl_live_forecast = (TabLayout) view.findViewById(R.id.live_tl_live_forecast);
+        live_vp_live_forecast = (ViewPager) view.findViewById(R.id.live_vp_live_forecast);
         List<Fragment> list=new ArrayList<>();
         list.add(new TodayFragment());
         list.add(new TomorrowFragment());
@@ -160,6 +161,7 @@ public class LiveFragment extends BaseFragment {
             tab.setCustomView(tabView);
         }
         live_vp_live_forecast.setCurrentItem(0);
+        live_ll.addView(view);
     }
 
 
