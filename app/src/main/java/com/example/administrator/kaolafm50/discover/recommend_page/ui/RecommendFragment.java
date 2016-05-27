@@ -11,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.example.administrator.kaolafm50.R;
 import com.example.administrator.kaolafm50.discover.recommend_page.adapter.BannerPagerAdapter;
@@ -24,6 +26,8 @@ import com.example.administrator.kaolafm50.others.utils.KalaTask;
 import com.example.administrator.kaolafm50.others.widget.ActiveLayout;
 import com.example.administrator.kaolafm50.others.widget.AnchorLayout;
 import com.example.administrator.kaolafm50.others.widget.SpecialPanel;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
@@ -49,6 +53,8 @@ public class RecommendFragment extends BaseFragment {
     private Handler mHandler;
     private int i=0;
 
+    private PullToRefreshScrollView pullToRefreshScrollView;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_recommend;
@@ -56,6 +62,7 @@ public class RecommendFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        pullToRefreshScrollView= (PullToRefreshScrollView) root;
         recommend_banner_vp= (ViewPager) root.findViewById(R.id.recommend_banner_vp);
         recommend_tl = (TabLayout) root.findViewById(R.id.recommend_tl);
         recommend_rv = (RecyclerView) root.findViewById(R.id.recommend_rv);
@@ -69,7 +76,25 @@ public class RecommendFragment extends BaseFragment {
 
     @Override
     protected void initEvent() {
+//        pullToRefreshScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ScrollView>() {
+//
+//            @Override
+//            public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
+//                requestData();
+//            }
+//        });
+        pullToRefreshScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollView>() {
 
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+                requestData();
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+                requestData();
+            }
+        });
     }
 
     @Override
@@ -77,6 +102,15 @@ public class RecommendFragment extends BaseFragment {
         enterAdapter=new EnterAdapter(getActivity(),enterList);
         recommend_rv.setAdapter(enterAdapter);
 
+        //请求网络，下载数据
+        requestData();
+
+    }
+
+    /**
+     * 请求网络，下载数据
+     */
+    private void requestData() {
         DiscoverHttpUtil.getRecommend(new KalaTask.IRequestCallback() {
 
             @Override
@@ -90,6 +124,9 @@ public class RecommendFragment extends BaseFragment {
 
                         List<Recommend> list=Recommend.arrayRecommendFromData(dataList.toString());
 
+                        //防止下拉刷新数据重复的方案，全部动态添加
+                        //在刷新请求成功后，先清除所有，然后添加
+                        //显示广告
                         showBanner(list.get(0));
                         showEnter(list.get(1));
 
@@ -111,18 +148,8 @@ public class RecommendFragment extends BaseFragment {
                                     break;
                             }
                         }
-
-//                        //今日必听
-//                        addSpecialPanel(list.get(3));
-//                        //王牌脱口秀
-//                        addSpecialPanel(list.get(4));
-//                        //热门话题
-//                        addSpecialPanel(list.get(5));
-//                        addImageView(list.get(6));
-//                        //小编推荐
-//                        addSpecialPanel(list.get(7));
-//                        //电台精选
-//                        addSpecialPanel(list.get(8));
+                        //在数据请求成功并解析完成后结束刷新
+                        pullToRefreshScrollView.onRefreshComplete();
 
                     }
 
@@ -131,11 +158,11 @@ public class RecommendFragment extends BaseFragment {
                 }
             }
 
-
-
             @Override
             public void error(String msg) {
-
+                //在数据请求后也结束刷新
+                pullToRefreshScrollView.onRefreshComplete();
+                Toast.makeText(getActivity(),"亲，请求网络失败，继续刷新试试？",Toast.LENGTH_SHORT).show();
             }
         });
 
