@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+    <TextView
+        android:id="@+id/select_today_tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="18:00"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/select_today_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="租房诚可贵，地铁价更高。"
+        android:textSize="16dp"
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/select_today_tv_time"
+        android:layout_toEndOf="@+id/select_today_tv_time"/>
+
+    <ImageView
+        android:id="@+id/select_today_iv_anchor"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/select_today_tv_title"
+        android:layout_toRightOf="@+id/select_today_tv_time"
+        android:layout_toEndOf="@+id/select_today_tv_time"/>
+
+    <TextView
+        android:id="@+id/select_today_tv_anchor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="小毛驴,王铁蛋"
+        android:layout_marginBottom="8dp"
+        android:layout_alignBottom="@+id/select_today_iv_anchor"
+        android:layout_toRightOf="@+id/select_today_iv_anchor"
+        android:layout_toEndOf="@+id/select_today_iv_anchor"/>
+
+    <ImageView
+        android:id="@+id/select_today_iv_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/woman"
+        android:layout_margin="3dp"
+        android:layout_alignTop="@+id/select_today_tv_anchor"
+        android:layout_toRightOf="@+id/select_today_tv_anchor"
+        android:layout_toEndOf="@+id/select_today_tv_anchor"/>
+
+    <ImageView
+        android:id="@+id/select_today_iv_weibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/v_anchor"
+        android:layout_margin="3dp"
+        android:layout_alignTop="@+id/select_today_tv_anchor"
+        android:layout_toRightOf="@+id/select_today_iv_gender"
+        android:layout_toEndOf="@+id/select_today_iv_gender"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/select_live_forecast_head_icon"
+        android:layout_marginRight="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>
