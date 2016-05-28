@@ -42,8 +42,12 @@ public class LivingAnchorLayout1 extends LinearLayout {
     }
     private void setLive(Live live) {
         lai1.setSpecial1(live.getDataList().get(0));
-        lai2.setSpecial1(live.getDataList().get(1));
-        lai3.setSpecial1(live.getDataList().get(2));
+        if (live.getDataList().size()>1) {
+            lai2.setSpecial1(live.getDataList().get(1));
+        }
+        if (live.getDataList().size()>1) {
+            lai3.setSpecial1(live.getDataList().get(2));
+        }
         tvName.setText(live.getName());
         tvMore.setText("更多");
     }

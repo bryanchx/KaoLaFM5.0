@@ -20,6 +20,35 @@
             android:layout_weight="1"
             android:background="@color/public_red">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignTop="@+id/my_rl_upper"
+                android:layout_centerHorizontal="true">
+                <ImageView
+                    android:id="@+id/my_iv_setting"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/setting_icon"/>
+                <ImageView
+                    android:id="@+id/my_iv_msg"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/my_iv_camera"
+                android:src="@drawable/ic_camera"
+                android:layout_marginTop="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
         </RelativeLayout>
 
         <LinearLayout

@@ -22,4 +22,6 @@
                 android:title="屏蔽管理"/>
         </menu>
     </item>
+    <item android:title="摇一摇" android:id="@+id/menu_setting_shake"/>
+    <item android:title="照相机" android:id="@+id/menu_setting_camera"/>
 </menu>

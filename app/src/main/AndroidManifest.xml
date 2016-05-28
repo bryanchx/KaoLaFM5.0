@@ -32,7 +32,6 @@
         <activity android:name=".others.ui.HomePlayerActivity">
         </activity>
         <activity android:name=".others.ui.HomeActivity">
-
         </activity>
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -44,7 +43,11 @@
 
         <activity android:name=".others.ui.WebActivity">
         </activity>
+        <activity android:name=".others.ui.ShakeActivity">
+        </activity>
+        <activity android:name=".others.ui.CameraActivity">
 
+        </activity>
     </application>
 
 </manifest>

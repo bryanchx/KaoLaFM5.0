@@ -1,29 +1,45 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context=".discover.recommend_page.ui.RecommendFragment">
+
+    <com.example.administrator.kaolafm50.discover.live_page.widget.LivingScrollView
+        android:id="@+id/live_sv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/live_ll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".discover.recommend_page.ui.RecommendFragment">
-
-    <LinearLayout
-        android:id="@+id/live_ll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+            android:orientation="vertical">
 
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/live_vp_banner"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="5dp"
-            android:scrollbars="horizontal"/>
-        <!--广告下方的滚动条-->
-        <android.support.design.widget.TabLayout
-            android:id="@+id/live_tl_banner"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"/>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/live_vp_banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="5dp"
+                android:scrollbars="horizontal"/>
+            <!--广告下方的滚动条-->
+            <android.support.design.widget.TabLayout
+                android:id="@+id/live_tl_banner"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"/>
 
-    </LinearLayout>
+        </LinearLayout>
+    </com.example.administrator.kaolafm50.discover.live_page.widget.LivingScrollView>
 
-</ScrollView>
+        <ImageView
+            android:id="@+id/live_iv_goto_live"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/goto_live_normal"/>
+
+</LinearLayout>
 

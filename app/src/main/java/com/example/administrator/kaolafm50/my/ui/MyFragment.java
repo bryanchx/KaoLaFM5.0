@@ -1,23 +1,30 @@
 package com.example.administrator.kaolafm50.my.ui;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.kaolafm50.R;
 import com.example.administrator.kaolafm50.my.adapter.MyViewPagerAdapter;
 import com.example.administrator.kaolafm50.my.widget.KaoLaScrollView;
 import com.example.administrator.kaolafm50.others.ui.BaseFragment;
+import com.example.administrator.kaolafm50.others.utils.FileUtil;
 import com.example.administrator.kaolafm50.others.utils.LogUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyFragment extends BaseFragment {
-
+public class MyFragment extends BaseFragment implements View.OnClickListener{
 
     private RelativeLayout my_rl_upper;
     private TabLayout my_tl;
@@ -25,6 +32,11 @@ public class MyFragment extends BaseFragment {
     private List<Fragment> fragments=new ArrayList<>();
     private List<String> titles=new ArrayList<>();
     private KaoLaScrollView my_klsv;
+
+    private int code=1;
+    private ImageView my_iv_camera;
+
+    private File imageFile;
 
     @Override
     protected int getLayoutId() {
@@ -37,6 +49,9 @@ public class MyFragment extends BaseFragment {
         my_tl = (TabLayout) root.findViewById(R.id.my_tl);
         my_vp = (ViewPager) root.findViewById(R.id.my_vp);
         my_klsv = (KaoLaScrollView) root.findViewById(R.id.my_klsv);
+
+        my_iv_camera = (ImageView) root.findViewById(R.id.my_iv_camera);
+        my_iv_camera.setOnClickListener(this);
     }
 
     @Override
@@ -73,5 +88,26 @@ public class MyFragment extends BaseFragment {
             });
         }
 
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==1) {
+            BitmapFactory.Options options=new BitmapFactory.Options();
+            Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), options);
+            my_iv_camera.setImageBitmap(bitmap);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        imageFile=new File(FileUtil.IMAGE_DIR,"kalaTouxiang.png");
+        Uri uri=Uri.fromFile(imageFile);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,uri);
+        startActivityForResult(intent,code);
     }
 }

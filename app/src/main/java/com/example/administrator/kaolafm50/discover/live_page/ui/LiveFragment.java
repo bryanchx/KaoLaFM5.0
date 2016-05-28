@@ -1,6 +1,9 @@
 package com.example.administrator.kaolafm50.discover.live_page.ui;
 
 
+import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
@@ -24,10 +27,12 @@ import com.example.administrator.kaolafm50.discover.live_page.widget.LivingItem;
 import com.example.administrator.kaolafm50.discover.live_page.widget.LivingLayout1;
 import com.example.administrator.kaolafm50.discover.live_page.widget.LivingPanel;
 import com.example.administrator.kaolafm50.discover.live_page.widget.LivingPanel1;
+import com.example.administrator.kaolafm50.discover.live_page.widget.LivingScrollView;
 import com.example.administrator.kaolafm50.discover.util.DiscoverHttpUtil;
 import com.example.administrator.kaolafm50.others.ui.BaseFragment;
 import com.example.administrator.kaolafm50.others.utils.ImageUtil;
 import com.example.administrator.kaolafm50.others.utils.KalaTask;
+import com.example.administrator.kaolafm50.others.utils.LogUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
@@ -54,6 +59,10 @@ public class LiveFragment extends BaseFragment {
     private static List<HostInDataInlive> listDate;
     private static List<HostInDataInlive> listDate2;
     private static List<HostInDataInlive> listDate3;
+    private ImageView live_iv_goto_live;
+    private LivingScrollView live_sv;
+    //上一次scrollview移动到的位置坐标
+    private int lastT=0;
 
     @Override
     protected int getLayoutId() {
@@ -66,11 +75,42 @@ public class LiveFragment extends BaseFragment {
         live_tl_banner = (TabLayout) root.findViewById(R.id.live_tl_banner);
         live_ll = (LinearLayout) root.findViewById(R.id.live_ll);
 
+
+        //找到我要直播按钮
+        live_iv_goto_live = (ImageView) root.findViewById(R.id.live_iv_goto_live);
+        //找到scrollview
+        live_sv = (LivingScrollView) root.findViewById(R.id.live_sv);
+
+        //刚进入界面就将我要直播按钮悬浮显示
+        ObjectAnimator oa = ObjectAnimator.ofFloat(live_iv_goto_live,"translationY",
+                0f, -250f);
+        oa.setDuration(1);//动画执行的时间
+        oa.start();//开始动画
+
     }
 
     @Override
     protected void initEvent() {
 
+        live_sv.setOnLivingScrollViewListener(new LivingScrollView.OnLivingScrollViewListener() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onLivingScrollChanged(int l, int t, int oldl, int oldt) {
+//                TranslateAnimation translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0f,
+//                        Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, -1f);
+//                translateAnimation.setDuration(1000);
+//                live_iv_goto_live.startAnimation(translateAnimation);
+                LogUtil.w("t="+t+" lastT="+lastT);
+                ObjectAnimator oa = ObjectAnimator.ofFloat(live_iv_goto_live,"translationY",
+                t-lastT>0?-250:0f, t-lastT>0?0f:-250f);
+                oa.setDuration(1000);//动画执行的时间
+//                oa.setRepeatMode(ObjectAnimator.REVERSE);//动画的重复方式
+                oa.start();//开始动画
+
+                lastT=t;
+            }
+        });
 
     }
 
@@ -137,6 +177,7 @@ public class LiveFragment extends BaseFragment {
             }
         });
 
+
     }
 
     /**
@@ -178,6 +219,9 @@ public class LiveFragment extends BaseFragment {
         }
         live_vp_live_forecast.setCurrentItem(0);
         live_ll.addView(view);
+
+
+
     }
 
     //公开给today获取数据的方法

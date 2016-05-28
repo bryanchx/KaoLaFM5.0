@@ -3,11 +3,9 @@ package com.example.administrator.kaolafm50.others.ui;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -39,9 +37,6 @@ public class HomeActivity extends AppCompatActivity {
 //    private NavigationView home_nv;
     private LinearLayout home_nv;
     private LinearLayout home_content_ll;
-
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +145,12 @@ public class HomeActivity extends AppCompatActivity {
 //
 //            @Override
 //            public boolean onNavigationItemSelected(MenuItem item) {
-////                LogUtil.w("item="+item.getTitle());
+//                switch (item.getItemId()) {
+//                    case R.id.menu_setting_shake:
+//                        Intent intent = new Intent(HomeActivity.this, ShakeActivity.class);
+//                        startActivity(intent);
+//                        break;
+//                }
 //                return false;
 //            }
 //        });

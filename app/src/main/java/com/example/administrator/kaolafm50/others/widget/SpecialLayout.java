@@ -41,10 +41,15 @@ public class SpecialLayout extends LinearLayout{
      *
      * @param list
      */
-    public void setSpecialList(List<Special> list)
-    {
-        si1.setSpecial(list.get(0));
-        si2.setSpecial(list.get(1));
-        si3.setSpecial(list.get(2));
+    public void setSpecialList(List<Special> list){
+        if (list.size()>0) {
+            si1.setSpecial(list.get(0));
+        }
+        if (list.size()>1) {
+            si2.setSpecial(list.get(1));
+        }
+        if (list.size()>2) {
+            si3.setSpecial(list.get(2));
+        }
     }
 }
