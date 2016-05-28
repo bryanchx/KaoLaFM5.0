@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KaoLaFM5.1.iml" filepath="$PROJECT_DIR$/KaoLaFM5.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZXingAndroid/ZXingAndroid.iml" filepath="$PROJECT_DIR$/ZXingAndroid/ZXingAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/pulltorefreshlibrary/pulltorefreshlibrary.iml" filepath="$PROJECT_DIR$/pulltorefreshlibrary/pulltorefreshlibrary.iml" />
     </modules>

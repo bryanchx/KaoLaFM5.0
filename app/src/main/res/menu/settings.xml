@@ -24,4 +24,5 @@
     </item>
     <item android:title="摇一摇" android:id="@+id/menu_setting_shake"/>
     <item android:title="照相机" android:id="@+id/menu_setting_camera"/>
+    <item android:title="二维码" android:id="@+id/menu_setting_QCode"/>
 </menu>
